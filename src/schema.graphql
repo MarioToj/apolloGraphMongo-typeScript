@@ -1,0 +1,70 @@
+type Query {
+    getUsers: GetUsersResponse!
+    getUser(userId: ID!): GetUserResponse!
+}
+
+type User {
+
+    id: ID!
+    username: String!
+    password: String!
+    email: String!
+}
+
+type Mutation {
+
+    createUser(input: CreateUserInput!): CreateUserResponse!
+    editUser(id: ID!, input: UpdateUserInput!): GetUserResponse!
+    deleteUser(id: ID!): DeleteUserResponse!
+}
+
+"User inputs"
+
+input CreateUserInput {
+
+    username: String!
+    password: String!
+    email: String!
+}
+
+input UpdateUserInput {
+
+    username: String
+    password: String
+    email: String
+}
+
+"Definitions of responses"
+
+type CreateUserResponse {
+
+    code: Int!
+    success: Boolean!
+    message: String!
+    user: User
+}
+
+type GetUserResponse {
+
+    code: Int!
+    success: Boolean!
+    message: String!
+    user: User
+}
+
+type GetUsersResponse {
+
+    code: Int!
+    success: Boolean!
+    message: String!
+    users: [User]!
+}
+
+type DeleteUserResponse {
+
+    code: Int!
+    success: Boolean!
+    message: String!
+}
+
+
