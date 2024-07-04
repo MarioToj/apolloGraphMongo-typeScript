@@ -67,7 +67,7 @@ export const resolvers: Resolvers = {
             return {
                 code: 500,
                 success: false,
-                message: `Something went wrong: ${ error.errmsg }`,
+                message: `User create error: ${ error.errmsg }`,
                 user: null,
             }
         }

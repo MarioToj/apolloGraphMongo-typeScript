@@ -12,6 +12,7 @@ import path from "path";
 
 dotenv.config();
 
+
 mongoose.connect(process.env.MONGO_URI).then(() => {
     console.log("Connected TO Mongo")
 })
@@ -26,8 +27,10 @@ const server = new ApolloServer({typeDefs, resolvers});
 async function startApolloServer() {
 
     const { url } = await startStandaloneServer(server, {
+
+        listen: { port: 4001 },
+
         context: async () => {
-            const { cache } = server;
 
             return {
                 dataSources: {
